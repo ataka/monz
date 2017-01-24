@@ -37,6 +37,26 @@
 \\{monz-mode-map}"
   )
 
+(define-key monz-mode-map "\M-\C-i"  'nxml-complete)
+(define-key monz-mode-map "\C-c\C-e" 'monz-insert-tag)
+(define-key monz-mode-map "\C-c\C-p" 'monz-insert-paragraph)
+
+;;
+;; Edit
+;;
+(defun monz-insert-paragraph ()
+  "Insert paragraph element"
+  (interactive)
+  (insert "<p")
+  (call-interactively 'nxml-balanced-close-start-tag-inline))
+
+(defun monz-insert-tag ()
+  "Insert HTML tag"
+  (interactive)
+  (insert "<")
+  (call-interactively 'nxml-complete)
+  (nxml-balanced-close-start-tag-inline))
+
 (provide 'monz)
 
 ;;; monz.el ends here
