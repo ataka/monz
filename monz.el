@@ -37,10 +37,24 @@
 \\{monz-mode-map}"
   )
 
+(define-key monz-mode-map "\M-\C-a"  'monz-previous-entry)
+(define-key monz-mode-map "\M-\C-e"  'monz-next-entry)
 (define-key monz-mode-map "\M-\C-i"  'nxml-complete)
 (define-key monz-mode-map "\C-c\C-e" 'monz-insert-tag)
 (define-key monz-mode-map "\C-c\C-n" 'monz-insert-new-entry)
 (define-key monz-mode-map "\C-c\C-p" 'monz-insert-paragraph)
+
+;;
+;; Move
+;;
+(defun monz-next-entry (arg)
+  (interactive "p")
+  (when (re-search-forward "^<entry>" nil t arg)
+    (beginning-of-line)))
+
+(defun monz-previous-entry (arg)
+  (interactive "p")
+  (monz-next-entry (- arg)))
 
 ;;
 ;; Edit
