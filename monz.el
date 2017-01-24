@@ -39,11 +39,19 @@
 
 (define-key monz-mode-map "\M-\C-i"  'nxml-complete)
 (define-key monz-mode-map "\C-c\C-e" 'monz-insert-tag)
+(define-key monz-mode-map "\C-c\C-n" 'monz-insert-new-entry)
 (define-key monz-mode-map "\C-c\C-p" 'monz-insert-paragraph)
 
 ;;
 ;; Edit
 ;;
+(defun monz-insert-new-entry ()
+  "Insert new entry"
+  (interactive)
+  (insert "<entry>\n<title>")
+  (save-excursion
+    (insert "</title>\n\n</entry>")))
+
 (defun monz-insert-paragraph ()
   "Insert paragraph element"
   (interactive)
