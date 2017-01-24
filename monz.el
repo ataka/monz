@@ -31,7 +31,11 @@
 
 ;;; Code:
 
-
+(define-derived-mode monz-mode
+  nxml-mode "Monz"
+  "Major mode for editing personal blog.
+\\{monz-mode-map}"
+  )
 
 (provide 'monz)
 
